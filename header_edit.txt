@@ -1,0 +1,37 @@
+Find this section in /var/www/html/admin/scripts/pi-hole/php/header.php (search for Help to find it)
+------------------------------------------------------------------------------
+<!-- Help -->
+<li<?php if($scriptname === "help.php"){ ?> class="active"<?php } ?>>
+     <a href="help.php">
+          <i class="fa fa-question-circle"></i> <span>Help</span>
+     </a>
+</li>
+------------------------------------------------------------------------------
+Add this below it
+------------------------------------------------------------------------------
+<!--add local dns-->
+<li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
+     <a href="local_dns.php">
+          <i class="fa"></i> <span>Add Local DNS Record</span>
+    </a>
+</li>
+------------------------------------------------------------------------------
+The end result should look like
+==============================================================================
+      <?php if($auth){ ?>
+      <!-- Help -->
+      <li<?php if($scriptname === "help.php"){ ?> class="active"<?php } ?>>
+           <a href="help.php">
+                <i class="fa fa-question-circle"></i> <span>Help</span>
+           </a>
+      </li>
+      <!--add local dns-->
+      <li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
+          <a href="local_dns.php">
+               <i class="fa"></i> <span>Add Local DNS Record</span>
+          </a>
+      </li>
+      <?php } ?>
+   </ul>
+</section>
+==============================================================================
