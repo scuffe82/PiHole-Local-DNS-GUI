@@ -59,7 +59,7 @@ After the edit it should look something like this:
 
 Refresh the GUI and you should now have a new nav bar option to add local dns. The text field will load your lan.list file from 
 /etc/pihole/ and allow you to edit it, save and restart the dnsmasq service. If the header.php file gets updated you will have to add the link back in or just load the page with the url 
-https://YOURPIHOLE.local/admin/local_dns.php
+http://YOURPIHOLE.local/admin/local_dns.php
 
 The format of the file is:
 IP FQDN Shortname
