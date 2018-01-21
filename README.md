@@ -1,11 +1,13 @@
 # PiHole-Local-DNS-GUI
 I was tired of logging into the console to edit the lan.list file when i added new records so i added a basic editor to the GUI. This is a frist stab at it and while its fully functional there is no error checking or anything fancy. If there is enough interest i'll make it more record based and add error checking. The other solution i keep reading is to use PiHole as my DHCP server and assign out addresses that way but for my environment that doesn't work out. Also once the new UI comes out i will have to update this to be compatible with it.
 
-Prereq: Make sure you have PiHole setup to serve local DNS: https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533
+Prereq: Make sure you have PiHole setup to serve local DNS:
+https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533
 
 
 Install Steps:
 1)Copy the local_dns.php file to /var/www/html/admin/
+
 2)Edit the file /var/www/html/admin/scripts/pi-hole/php/header.php (details also in header_edit.txt for reference)
 
 Find the section that looks like this:
