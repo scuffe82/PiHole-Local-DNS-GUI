@@ -14,26 +14,31 @@ Install Steps:
 
 Find the section that looks like this:
 ------------------------------------------------------------------------------
+```
 <!-- Help -->
 <li<?php if($scriptname === "help.php"){ ?> class="active"<?php } ?>>
      <a href="help.php">
           <i class="fa fa-question-circle"></i> <span>Help</span>
      </a>
 </li>
+```
 ------------------------------------------------------------------------------
 
 Add the following section below it:
 ------------------------------------------------------------------------------
+```
 <!--add local dns-->
 <li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
      <a href="local_dns.php">
           <i class="fa"></i> <span>Add Local DNS Record</span>
     </a>
 </li>
+```
 ------------------------------------------------------------------------------
 
 After the edit it should look something like this:
-------------------------------------------------------------------------------
+---
+```
       <?php if($auth){ ?>
       <!-- Help -->
       <li<?php if($scriptname === "help.php"){ ?> class="active"<?php } ?>>
@@ -50,9 +55,10 @@ After the edit it should look something like this:
       <?php } ?>
    </ul>
 </section>
-------------------------------------------------------------------------------
+```
 
-Refresh the GUI and you should now have a new nav bar option to add local dns. The text field will load your lan.list file from /etc/pihole/ and allow you to edit it, save and restart the dnsmasq service. If the header.php file gets updated you will have to add the link back in or just load the page with the url 
+Refresh the GUI and you should now have a new nav bar option to add local dns. The text field will load your lan.list file from 
+/etc/pihole/ and allow you to edit it, save and restart the dnsmasq service. If the header.php file gets updated you will have to add the link back in or just load the page with the url 
 https://YOURPIHOLE.local/admin/local_dns.php
 
 The format of the file is:
