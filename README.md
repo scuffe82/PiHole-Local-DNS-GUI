@@ -7,6 +7,7 @@ https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533
 
 
 Install Steps:
+
 1)Copy the local_dns.php file to /var/www/html/admin/
 
 2)Edit the file /var/www/html/admin/scripts/pi-hole/php/header.php (details also in header_edit.txt for reference)
