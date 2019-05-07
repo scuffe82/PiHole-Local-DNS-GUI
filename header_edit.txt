@@ -1,4 +1,4 @@
-Find this section in /var/www/html/admin/scripts/pi-hole/php/header.php (search for Help to find it)
+''Find this section in /var/www/html/admin/scripts/pi-hole/php/header.php (search for Help to find it)''
 ------------------------------------------------------------------------------
 <!-- Help -->
 <li<?php if($scriptname === "help.php"){ ?> class="active"<?php } ?>>
@@ -12,11 +12,11 @@ Add this below it
 <!--add local dns-->
 <li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
      <a href="local_dns.php">
-          <i class="fa"></i> <span>Add Local DNS Record</span>
-    </a>
+         <i class="fa fa-file"></i> <span>Local DNS Record</span>
+     </a>
 </li>
 ------------------------------------------------------------------------------
-The end result should look like
+''The end result should look like''
 ==============================================================================
       <?php if($auth){ ?>
       <!-- Help -->
@@ -28,7 +28,7 @@ The end result should look like
       <!--add local dns-->
       <li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
           <a href="local_dns.php">
-               <i class="fa"></i> <span>Add Local DNS Record</span>
+               <i class="fa fa-file"></i> <span>Local DNS Record</span>
           </a>
       </li>
       <?php } ?>

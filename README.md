@@ -5,12 +5,22 @@ Prereq: Make sure you have PiHole setup to serve local DNS:
 
 https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533
 
+## If you don't already have the **lan.list** file, you have to write theses commands in ssh:
+```
+echo "addn-hosts=/etc/pihole/lan.list" | sudo tee /etc/dnsmasq.d/02-lan.conf
+sudo pihole restartdns
+```
 
-Install Steps:
+## Install Steps:
 
-1)Copy the local_dns.php file to /var/www/html/admin/
+1) Write these commands in ssh (give read/write access of lan.list to php script)
+```
+sudo chown pihole:www-data /etc/pihole/lan.list
+sudo chmod 765 /etc/pihole/lan.list
+```
 
-2)Edit the file /var/www/html/admin/scripts/pi-hole/php/header.php (details also in header_edit.txt for reference)
+2) Copy the local_dns.php file to /var/www/html/admin/
+3) Edit the file /var/www/html/admin/scripts/pi-hole/php/header.php (details also in header_edit.txt for reference)
 
 Find the section that looks like this:
 ------------------------------------------------------------------------------
@@ -30,7 +40,7 @@ Add the following section below it:
 <!--add local dns-->
 <li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
      <a href="local_dns.php">
-          <i class="fa"></i> <span>Add Local DNS Record</span>
+          <i class="fa fa-file"></i> <span>Local DNS Record</span>
     </a>
 </li>
 ```
@@ -49,7 +59,7 @@ After the edit it should look something like this:
       <!--add local dns-->
       <li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
           <a href="local_dns.php">
-               <i class="fa"></i> <span>Add Local DNS Record</span>
+               <i class="fa fa-file"></i> <span>Local DNS Record</span>
           </a>
       </li>
       <?php } ?>

@@ -14,35 +14,46 @@
 <div class="row">
     <div class="col-md-12">
     <h1>Add Local DNS Record</h1>
-    <h4>Update lan.list with a new dns record</h4>
+    <h4>Update lan.list file with a new dns record</h4>
 </div>
 <div class="row">
     <div class="col-md-12">
 <?php
-$save_file = $_POST['save_file'];
-$savecontent = $_POST['savecontent'];
-$loadcontent = "/etc/pihole/lan.list";
+	$save_file = $_POST['save_file'];
+	$r_dns = $_POST['r_dns'];
+	$savecontent = $_POST['savecontent'];
+	$loadcontent = "/etc/pihole/lan.list";
+	$add="";
+	$lb="";
         if($save_file) {
-                $savecontent = stripslashes($savecontent);
-                $fp = @fopen($loadcontent, "w");
-                if ($fp) {
-                        fwrite($fp, $savecontent);
-                        fclose($fp);
-                                                           }
-                                }
-        $fp = @fopen($loadcontent, "r");
-                $loadcontent = fread($fp, filesize($loadcontent));
-                $loadcontent = htmlspecialchars($loadcontent);
-                fclose($fp);
+            $savecontent = stripslashes($savecontent);
+			
+			file_put_contents($loadcontent,$savecontent);
+        }
+		
+		if($r_dns){
+			shell_exec("sudo pihole restartdns");
+		}
+		
+    $loadcontent_t = @htmlspecialchars(file_get_contents($loadcontent));
+	if(!strpos($loadcontent_t,"Local DNS Resolution List")){
+		$add="# Local DNS Resolution List #\n#ipaddress fqdn hostname\n\n";
+	}
+	if(substr($loadcontent_t,-1) !== "\n") {
+		$lb="\n";
+	}
+	$loadcontent_t = $add.$loadcontent_t.$lb;
+	
+	if($lb!=="" || $add!==""){
+		file_put_contents($loadcontent,$loadcontent_t);
+	}
 
 ?>
 <form method=post action="<?=$_SERVER['PHP_SELF']?>">
-<textarea name="savecontent" cols="70" rows="25"><?=$loadcontent?></textarea>
-<br>
-<input type="submit" name="save_file" value="Save">
-<form action="<?php shell_exec("sudo pihole restartdns");?>" method="get">
-  <input type="submit" value="Restart DNS">
-</form>
+	<textarea style="margin:10px;width:98%" name="savecontent" cols="70" rows="25"><?=$loadcontent_t?></textarea>
+	<br>
+	<input type="submit" name="save_file" value="Save">
+	<input type="submit" name="r_dns" value="Restart DNS">
 </form>
     </div>
 </div>
