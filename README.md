@@ -40,7 +40,7 @@ Add the following section below it:
 <!--add local dns-->
 <li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
      <a href="local_dns.php">
-          <i class="fa"></i> <span>Add Local DNS Record</span>
+          <i class="fa fa-file"></i> <span>Local DNS Record</span>
     </a>
 </li>
 ```
@@ -59,7 +59,7 @@ After the edit it should look something like this:
       <!--add local dns-->
       <li<?php if($scriptname === "local_dns.php"){ ?> class="active"<?php } ?>>
           <a href="local_dns.php">
-               <i class="fas fa-file-signature"></i> <span>Local DNS Record</span>
+               <i class="fa fa-file"></i> <span>Local DNS Record</span>
           </a>
       </li>
       <?php } ?>
